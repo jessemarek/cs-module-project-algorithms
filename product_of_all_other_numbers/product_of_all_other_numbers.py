@@ -7,12 +7,17 @@ Returns: a List of integers
 def product_of_all_other_numbers(arr):
     # create a new array to hold the product values
     result = [0] * len(arr)
+
     # for each index, look at every other number in the list.
-    # replace the current index with the product of all the other numbers
     for i in range(len(arr)):
         product = 1
+
+        # multiply all the numbers in the array together
         for j in range(len(arr)):
             product *= arr[j]
+
+        # replace the current index with the product
+        # divided by the current index
         result[i] = product // arr[i]
 
     return result
