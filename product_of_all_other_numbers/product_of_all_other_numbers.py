@@ -5,7 +5,7 @@ Returns: a List of integers
 
 
 def product_of_all_other_numbers(arr):
-    # create a new array to hold the product values
+    """ # create a new array to hold the product values
     result = [0] * len(arr)
 
     # for each index, look at every other number in the list.
@@ -19,6 +19,35 @@ def product_of_all_other_numbers(arr):
         # replace the current index with the product
         # divided by the current index
         result[i] = product // arr[i]
+
+    return result """
+
+    # create a new array to hold the product values
+    result = [0] * len(arr)
+
+    # for each index we need to get the product of all
+    # the elements below and above it
+
+    for i in range(len(arr)):
+        # set pointers to the current index, left and right
+        left = right = i
+        # store the product to the left and right of the current index
+        prod_left = prod_right = 1
+
+        # while we have elements to the left of the current index
+        # multiply them together
+        while left > 0:
+            left -= 1
+            prod_left *= arr[left]
+
+        # while we have elements to the right of the current index
+        # multiply them together
+        while right <= len(arr)-2:
+            right += 1
+            prod_right *= arr[right]
+
+        # the result is the product of the left and right products
+        result[i] = prod_left * prod_right
 
     return result
 
